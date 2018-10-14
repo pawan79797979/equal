@@ -28,6 +28,7 @@ resource "aws_subnet" "main-private-1" {
         Name = "main-private-1"
     }
 }
+
 # Internet GW
 resource "aws_internet_gateway" "main-gw" {
     vpc_id = "${aws_vpc.main.id}"
@@ -35,13 +36,20 @@ resource "aws_internet_gateway" "main-gw" {
         Name = "main"
     }
 }
+
+resource "aws_eip" "fornat" {
+    vpc      = true
+}
+
 resource "aws_nat_gateway" "nat-gw" {
-  allocation_id = "${aws_eip.nat.id}"
+  allocation_id = "${aws_eip.fornat.id}"
   subnet_id = "${aws_subnet.main-public-1.id}"
+  depends_on = ["aws_internet_gateway.main-gw"]
   tags {
     Name = "gw_NAT"
   }
 }
+
 # route tables
 resource "aws_route_table" "main-public" {
     vpc_id = "${aws_vpc.main.id}"

@@ -4,10 +4,17 @@ data "template_file" "init-script" {
     REGION = "${var.AWS_REGION}"
   }
 }
-data "template_file" "shell-script" {
-  template = "${file("scripts/install.sh")}"
+
+data "template_file" "shell-script-pub" {
+  template = "${file("scripts/shell-script-pub.sh")}"
   
 }
+
+data "template_file" "shell-script-prv" {
+  template = "${file("scripts/shell-script-prv.sh")}"
+  
+}
+
 data "template_cloudinit_config" "cloudinit-public" {
   gzip = false
   base64_encode = false
@@ -21,6 +28,7 @@ data "template_cloudinit_config" "cloudinit-public" {
     content = "${data.template_file.shell-script-pub.rendered}"
   }
 }
+
 data "template_cloudinit_config" "cloudinit-private" {
   gzip = false
   base64_encode = false
