@@ -14,7 +14,9 @@ cd /opt/apache-tomcat-8.5.34/bin
 sudo chmod +x *
 sudo ./startup.sh
 
+
 # Install docker
+cd /opt
 sudo curl -fsSL get.docker.com -o get-docker.sh
 sudo chmod +x get-docker.sh
 sudo sh get-docker.sh

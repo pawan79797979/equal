@@ -16,7 +16,6 @@ sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-port=8080/tcp
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --reload
-sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
 # Install Ansible
