@@ -6,7 +6,7 @@ sudo yum -y update
 
 #Installation Jenkins
 
-sudo yum -y install java-1.8.0-openjdk.x86_64 wget firewalld
+sudo yum -y install java-1.8.0-openjdk.x86_64 wget firewalld ansible
 
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
@@ -19,4 +19,6 @@ sudo firewall-cmd --reload
 sudo systemctl enable jenkins
 
 # Install Ansible
-sudo yum -y install ansible
+#sudo -s <<EOF
+#yum -y install ansible
+#EOF

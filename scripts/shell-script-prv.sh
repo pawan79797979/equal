@@ -6,8 +6,9 @@ sudo yum -y update
 sudo yum -y install java-1.8.0-openjdk.x86_64 wget firewalld
 
 #Installing Tomcat 8
+sudo -s <<EOF
 cd /opt
-sudo wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz
+wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz
 sudo tar xvfz apache-tomcat-8.5.34.tar.gz
 cd /opt/apache-tomcat-8.5.34/bin
 
@@ -16,7 +17,9 @@ sudo ./startup.sh
 
 
 # Install docker
+sudo -s <<EOF
 cd /opt
-sudo curl -fsSL get.docker.com -o get-docker.sh
-sudo chmod +x get-docker.sh
-sudo sh get-docker.sh
+curl -fsSL get.docker.com -o get-docker.sh
+chmod +x get-docker.sh
+sh get-docker.sh
+EOF
